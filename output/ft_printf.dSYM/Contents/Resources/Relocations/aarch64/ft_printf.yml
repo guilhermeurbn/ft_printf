@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/guilhermeurbano/ft_printf/output/ft_printf'
+relocations:     []
+...
