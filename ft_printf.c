@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:15:27 by guilhermeur       #+#    #+#             */
-/*   Updated: 2024/11/15 16:04:44 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:48:20 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int print_char(int c)
+static int print_char(int c)
 {
 	return (write(1, &c, 1));
 }
 
-int print_str(char *str)
+static int print_str(char *str)
 {
 	int count;
 
@@ -35,7 +35,7 @@ int print_str(char *str)
 	return (count);
 }
 
-int print_digit(long n, int base)
+static int print_digit(long n, int base)
 {
 	int count;
 	char *simbolos;
@@ -50,10 +50,10 @@ int print_digit(long n, int base)
 	if (n >= base)
 		count += print_digit(n / base, base);
 	count += print_char(simbolos[n % base]);
-	return count;
+	return (count);
 }
 
-int print_digit_n_negative(long n, int base)
+static int print_digit_n_negative(long n, int base)
 {
 	int count;
 	char *simbolos;
@@ -65,10 +65,10 @@ int print_digit_n_negative(long n, int base)
 	if (n >= base)
 		count += print_digit(n / base, base);
 	count += print_char(simbolos[n % base]);
-	return count;
+	return (count);
 }
 
-int print_digit_upper(long n, int base)
+static int print_digit_upper(long n, int base)
 {
 	int count;
 	char *simbolos;
@@ -81,11 +81,19 @@ int print_digit_upper(long n, int base)
 		n = -n;
 	}
 	if (n >= base)
-		count += print_digit(n / base, base);
+		count += print_digit_upper(n / base, base);
 	count += print_char(simbolos[n % base]);
-	return count;
+	return (count);
 }
+int print_pointer(unsigned long b)
+{
+	int count;
 
+	count = 0;
+	count += print_str("0x");
+	count += print_digit(b, 16);
+	return (count);
+}
 int print_format(char especial, va_list ap)
 {
 	int count;
@@ -95,8 +103,8 @@ int print_format(char especial, va_list ap)
 		count += print_char(va_arg(ap, int));
 	else if (especial == 's')
 		count += print_str(va_arg(ap, char *));
-	/* else if (especial == 'p')
-		count += print_pointer(va_arg(ap, char *)); */
+	else if (especial == 'p')
+		count += print_pointer(va_arg(ap, unsigned long));
 	else if (especial == 'd')
 		count += print_digit((long)(va_arg(ap, int)), 10);
 	else if (especial == 'i')
@@ -139,8 +147,35 @@ int my_printf(const char *format, ...)
 int main()
 {
 	my_printf("Hello, %s!\n", "World");
+	printf("Hello, %s!\n", "World");
+	printf("\n");
+
 	my_printf("Character: %c\n", 'A');
+	printf("Character: %c\n", 'A');
+	printf("\n");
+
 	my_printf("Decimal: %d\n", -12345);
-	my_printf("Hexadecimal: %x\n", 255);
+	printf("Decimal: %d\n", -12345);
+
+	printf("\n");
+
+	my_printf("Hexadecimal: %x\n", -254);
+	printf("Hexadecimal: %x\n", -254);
+	printf("\n");
+
+	my_printf("Maisculas_hexa: %X\n", -254);
+	printf("Maisculas_hexa: %X\n", -254);
+	printf("\n");
+
+	my_printf("sinal de porcentagem: %%\n");
+	printf("sinal de porcentagem: %%\n");
+	printf("\n");
+
+	char *a;
+	char *b;
+
+	a = b;
+	my_printf("endereco: %p\n", a);
+	printf("endereco: %p\n", a);
 	return 0;
 }
