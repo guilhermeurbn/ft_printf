@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_pointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 15:15:32 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/19 14:11:46 by guisanto         ###   ########.fr       */
+/*   Created: 2024/11/19 13:50:06 by guisanto          #+#    #+#             */
+/*   Updated: 2024/11/19 13:52:42 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
+int print_pointer(unsigned long b)
+{
+	int count;
 
-int ft_printf(const char *format, ...);
-int print_str(char *str);
-int print_digit(long n, int base);
-int print_char(int c);
-int print_digit_n_negative(long n, int base);
-int print_digit_upper(long n, int base);
-int print_pointer(unsigned long b);
-
-
-#endif
+	count = 0;
+	count += print_str("0x");
+	count += print_digit(b, 16);
+	return (count);
+}
