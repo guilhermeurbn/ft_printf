@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_pointer.c                                    :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 13:50:06 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/19 13:52:42 by guisanto         ###   ########.fr       */
+/*   Created: 2024/11/19 13:35:58 by guisanto          #+#    #+#             */
+/*   Updated: 2024/11/20 12:21:15 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_pointer(unsigned long b)
+int	ft_print_str(char *str)
 {
-	int count;
+	int	count;
 
 	count = 0;
-	count += print_str("0x");
-	count += print_digit(b, 16);
+	if (!str)
+		str = "(null)";
+	while (*str != '\0')
+	{
+		count += ft_print_char((int) *str);
+		str++;
+	}
 	return (count);
 }

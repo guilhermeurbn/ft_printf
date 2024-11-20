@@ -6,63 +6,62 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:15:27 by guilhermeur       #+#    #+#             */
-/*   Updated: 2024/11/19 14:17:12 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/20 13:01:32 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int print_format(char especial, va_list args)
+static int	ft_print_format(char especial, va_list args)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (especial == 'c')
-		count += print_char(va_arg(args, int));
+		count += ft_print_char(va_arg(args, int));
 	else if (especial == 's')
-		count += print_str(va_arg(args, char *));
+		count += ft_print_str(va_arg(args, char *));
 	else if (especial == 'p')
-		count += print_pointer((unsigned long)va_arg(args, void *));
+		count += ft_print_pointer((unsigned long)va_arg(args, void *));
 	else if (especial == 'd' || especial == 'i')
-		count += print_digit((va_arg(args, int)), 10);
+		count += ft_print_digit((va_arg(args, int)), 10);
 	else if (especial == 'u')
-		count += print_digit_n_negative((va_arg(args, unsigned int)), 10);
+		count += ft_print_digit_n_negative((va_arg(args, unsigned int)), 10);
 	else if (especial == 'x')
-		count += print_digit((long)(va_arg(args, unsigned int)), 16);
+		count += ft_print_digit((long)(va_arg(args, unsigned int)), 16);
 	else if (especial == 'X')
-		count += print_digit_upper((long)(va_arg(args, unsigned int)), 16);
+		count += ft_print_digit_upper((long)(va_arg(args, unsigned int)), 16);
 	else if (especial == '%')
-		count = print_char('%');
+		count = ft_print_char('%');
 	else
-		count += print_char(especial);
+		count += ft_print_char(especial);
 	return (count);
 }
 
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		count;
 	int		i;
 
 	i = 0;
-	va_start(args, format);
+	va_start (args, format);
 	count = 0;
-	while(format[i] != '\0')
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			count += print_format(format[i], args);
+			count += ft_print_format(format[i], args);
 		}
 		else
 			count += write(1, &format[i], 1);
 		i++;
 	}
-	va_end(args);
+	va_end (args);
 	return (count);
 }
-
-int main()
+/* int main()
 {
 	ft_printf("Hello, %s!\n", "World");
 	printf("Hello, %s!\n", "World");
@@ -90,11 +89,10 @@ int main()
 	printf("\n");
 
 	char *a;
-	char *b;
+	char *b = NULL;
 
 	a = b;
 	ft_printf("endereco: %p\n", a);
 	printf("endereco: %p\n", a);
 	return 0;
-}
-
+} */

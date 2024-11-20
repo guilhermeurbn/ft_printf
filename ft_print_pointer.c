@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_digit_n_negative.c                           :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 13:50:28 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/19 14:05:16 by guisanto         ###   ########.fr       */
+/*   Created: 2024/11/19 13:50:06 by guisanto          #+#    #+#             */
+/*   Updated: 2024/11/20 13:03:30 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_digit_n_negative(long n, int base)
+int	ft_print_pointer(unsigned long b)
 {
-	int count;
-	char *simbolos;
+	int	count;
 
 	count = 0;
-	simbolos = "0123456789abcdef";
-	if (n < 0)
-		n = -n;
-	if (n >= base)
-		count += print_digit_n_negative(n / base, base);
-	count += print_char(simbolos[n % base]);
+	if (b == 0)
+		return (count += ft_print_str("(nil)"));
+	count += ft_print_str("0x");
+	count += ft_print_digit(b, 16);
 	return (count);
 }

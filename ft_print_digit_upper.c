@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   ft_print_digit_upper.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 13:35:58 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/19 13:36:40 by guisanto         ###   ########.fr       */
+/*   Created: 2024/11/19 13:50:18 by guisanto          #+#    #+#             */
+/*   Updated: 2024/11/20 12:20:34 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int print_str(char *str)
+int	ft_print_digit_upper(long n, int base)
 {
-	int count;
+	int		count;
+	char	*simbolos;
 
 	count = 0;
-	if (!str)
-		str = "(null)";
-	while(*str != '\0')
+	simbolos = "0123456789ABCDEF";
+	if (n < 0)
 	{
-		count += print_char((int) *str);
-		str++;
+		count += write(1, "-", 1);
+		n = -n;
 	}
+	if (n >= base)
+		count += ft_print_digit_upper(n / base, base);
+	count += ft_print_char(simbolos[n % base]);
 	return (count);
 }
