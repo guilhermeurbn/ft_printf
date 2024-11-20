@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:35:58 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/20 12:21:15 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:30:17 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 int	ft_print_str(char *str)
 {
 	int	count;
+	int	i;
 
+	i = 0;
 	count = 0;
 	if (!str)
 		str = "(null)";
-	while (*str != '\0')
+	while (str[i] != '\0')
 	{
-		count += ft_print_char((int) *str);
-		str++;
+		count += ft_print_char((int) str[i]);
+		i++;
 	}
 	return (count);
 }

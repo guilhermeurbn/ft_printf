@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:15:32 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/20 12:23:47 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:40:48 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int	ft_print_char(int c);
 int	ft_print_digit_n_negative(long n, int base);
 int	ft_print_digit_upper(long n, int base);
 int	ft_print_pointer(unsigned long b);
+
 #endif

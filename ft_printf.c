@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:15:27 by guilhermeur       #+#    #+#             */
-/*   Updated: 2024/11/20 13:01:32 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:31:47 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_print_format(char especial, va_list args)
 	else if (especial == 'X')
 		count += ft_print_digit_upper((long)(va_arg(args, unsigned int)), 16);
 	else if (especial == '%')
-		count = ft_print_char('%');
+		count += ft_print_char('%');
 	else
 		count += ft_print_char(especial);
 	return (count);
@@ -63,36 +63,56 @@ int	ft_printf(const char *format, ...)
 }
 /* int main()
 {
-	ft_printf("Hello, %s!\n", "World");
-	printf("Hello, %s!\n", "World");
-	printf("\n");
+	char *a;
+	char *b = "hello world!";
+	a = b;
 
+ 	//%c Imprime um único caractere.
 	ft_printf("Character: %c\n", 'A');
 	printf("Character: %c\n", 'A');
 	printf("\n");
 
-	ft_printf("Decimal: %d\n", -12345);
-	printf("Decimal: %d\n", -12345);
 
+	//%%s Imprime uma string
+	ft_printf("Hello, %s!\n", "World");
+	printf("Hello, %s!\n", "World");
 	printf("\n");
 
-	ft_printf("Hexadecimal: %x\n", -254);
-	printf("Hexadecimal: %x\n", -254);
+	//%p O endereço do ponteiro void *
+	//deve ser impresso em formato hexadecimal.
+	ft_printf("endereco: %p\n", a);
+	printf("endereco: %p\n", a);
 	printf("\n");
 
-	ft_printf("Maisculas_hexa: %X\n", -254);
-	printf("Maisculas_hexa: %X\n", -254);
+
+	//%d Imprime um número decimal (base 10).
+	ft_printf("Decimal: %d\n", 42);
+	printf("Decimal: %d\n", 42);
 	printf("\n");
 
+	//%i Imprime um inteiro em base 10.
+	ft_printf("Decimal base 10: %i\n", 42);
+	printf("Decimal base 10: %i\n", 42);
+	printf("\n");
+
+	//%u Imprime um número decimal (base 10) sem sinal.
+	ft_printf("Decimal sem sinal: %u\n", 42);
+	printf("Decimal sem sinal: %u\n", 42);
+	printf("\n");
+
+	//%x Imprime um número em formato hexadecimal (base 16) em minúsculas.
+	ft_printf("Hexadecimal (minusculas): %x\n", 600);
+	printf("Hexadecimal (minusculas): %x\n", 600);
+	printf("\n");
+
+	//%X Imprime um número em formato hexadecimal (base 16) em maiúsculas.
+	ft_printf("Hexadecimal (maisculas): %X\n", 42);
+	printf("Hexadecimal (maisculas): %X\n", 42);
+	printf("\n");
+
+	//%% Imprime um sinal de porcentagem
 	ft_printf("sinal de porcentagem: %%\n");
 	printf("sinal de porcentagem: %%\n");
 	printf("\n");
 
-	char *a;
-	char *b = NULL;
-
-	a = b;
-	ft_printf("endereco: %p\n", a);
-	printf("endereco: %p\n", a);
-	return 0;
 } */
