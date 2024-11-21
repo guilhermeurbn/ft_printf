@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:50:28 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/21 12:32:17 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:43:47 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	ft_print_digit_n_negative(long n, int base)
 
 	count = 0;
 	ft_base = "0123456789abcdef";
-	if (n < 0)
-		n = -n;
 	if (n >= base)
 		count += ft_print_digit_n_negative(n / base, base);
 	count += ft_print_char(ft_base[n % base]);

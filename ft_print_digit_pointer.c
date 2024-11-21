@@ -6,7 +6,7 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:53:16 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/21 12:49:07 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:47:36 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ int	ft_print_digit_pointer(unsigned long n, unsigned long base)
 
 	count = 0;
 	ft_base = "0123456789abcdef";
-
 	if (n >= base)
 		count += ft_print_digit_pointer(n / base, base);
 	count += ft_print_char(ft_base[n % base]);
 	return (count);
 }
-

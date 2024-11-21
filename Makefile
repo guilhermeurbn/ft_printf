@@ -6,7 +6,7 @@
 #    By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/15 13:15:51 by guilhermeur       #+#    #+#              #
-#    Updated: 2024/11/20 12:04:59 by guisanto         ###   ########.fr        #
+#    Updated: 2024/11/21 14:27:36 by guisanto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,14 @@ NAME = libftprintf.a
 
 CC = cc
 INCLUDES_DIR = includes
-SRCS = $(wildcard ft_*.c)
+SRCS	= ft_print_char.c \
+			ft_print_digit_n_negative.c \
+			ft_print_digit_pointer.c \
+			ft_print_digit_upper.c \
+			ft_print_pointer.c \
+			ft_print_digit.c \
+			ft_print_str.c \
+			ft_printf.c \
 
 CFLAGS = -Wall -Werror -Wextra -I $(INCLUDES_DIR)
 
