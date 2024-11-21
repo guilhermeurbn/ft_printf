@@ -6,19 +6,22 @@
 /*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:48:31 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/20 13:02:06 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/21 12:33:53 by guisanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+
 int	ft_print_digit(long n, int base)
 {
 	int		count;
-	char	*simbolos;
+	char	*ft_base;
+
 
 	count = 0;
-	simbolos = "0123456789abcdef";
+	ft_base = "0123456789abcdef";
+
 	if (n < 0)
 	{
 		count += write(1, "-", 1);
@@ -26,6 +29,6 @@ int	ft_print_digit(long n, int base)
 	}
 	if (n >= base)
 		count += ft_print_digit(n / base, base);
-	count += ft_print_char(simbolos[n % base]);
+	count += ft_print_char(ft_base[n % base]);
 	return (count);
 }
