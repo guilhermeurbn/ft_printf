@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilhermeurbano <guilhermeurbano@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:15:27 by guilhermeur       #+#    #+#             */
-/*   Updated: 2024/11/21 14:29:00 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:26:10 by guilhermeur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	ft_printf(const char *format, ...)
 	int		count;
 	int		i;
 
+	if (!format)
+		return (-1);
 	i = 0;
 	va_start (args, format);
 	count = 0;

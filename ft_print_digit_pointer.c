@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_digit_pointer.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guisanto <guisanto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: guilhermeurbano <guilhermeurbano@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:53:16 by guisanto          #+#    #+#             */
-/*   Updated: 2024/11/21 13:47:36 by guisanto         ###   ########.fr       */
+/*   Updated: 2024/11/22 10:29:34 by guilhermeur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_print_digit_pointer(unsigned long n, unsigned long base)
 	int		count;
 	char	*ft_base;
 
+	if (base < 2 || base > 16)
+    	return (0);
 	count = 0;
 	ft_base = "0123456789abcdef";
 	if (n >= base)
